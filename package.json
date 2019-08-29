@@ -1,0 +1,22 @@
+{
+  "name": "characters",
+  "version": "1.0.0",
+  "description": "list of characters for Clicky Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xisifer/Week14HW-ClickyGame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xisifer/Week14HW-ClickyGame/issues"
+  },
+  "homepage": "https://github.com/Xisifer/Week14HW-ClickyGame#readme",
+  "dependencies": {
+    "react": "^16.9.0"
+  }
+}
