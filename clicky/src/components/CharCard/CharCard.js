@@ -7,7 +7,7 @@ function CharCard(props) {
 
 
     <React.Fragment>
-    <div className="card">
+    <button className="card" onClick={() => props.clickChecker(props.id)} >
 
       <div className="img-container">
         <img alt={props.name} src={props.image} />
@@ -27,8 +27,8 @@ function CharCard(props) {
         </ul>        
       </div> */}
       {/* Inserting props.id as an argument for the RemoveChar function, so we can specifically tell it which ID to be removing, i.e. the thing we just clicked on */}
-      <span onClick={() => props.removeChar(props.id)} className="remove">𝘅</span>
-    </div>
+      {/* <span onClick={() => props.removeChar(props.id)} className="remove">𝘅</span> */}
+    </button>
   </React.Fragment>
   );
 }
