@@ -7,7 +7,10 @@ import chars from "./chars.json";
 class App extends Component {
   // Setting this.state.chars to the chars json array
   state = {
-    chars
+    clickedChars: [],
+    score: 0,
+    highScore: 0,
+    chars:chars
   };
   // state = chars[Math.floor(Math.random()*chars.length)];
 
@@ -25,30 +28,27 @@ class App extends Component {
 
   clickChecker() {
     // Pseudocode Time!!:
-    // let chars = this.state.chars;
-    let score = 0;
-    let highScore = 0;
     // When the image is clicked, we need to...
     
     // Create an array storing the ID of all clicked characters
-    let clickedChars = [];
-    // Check whether or not the character's id is located in the clickedChars array (aka, it has already been clicked)
-    if (clickedChars.indexOf(chars.id)) {
-    // If it HAS been clicked before, then...
     
-    // Reset Score back to 0
-      score = 0;
-    // Shake the screen?
+    // Check whether or not the character's id is located in the clickedChars array (aka, it has already been clicked)
+    if (this.state.clickedChars.indexOf(chars.id)) {
+      // If it HAS been clicked before, then...
+    
+      // Reset Score back to 0
+      this.state.score = 0;
+      // Shake the screen?
 
-    // Change the text to say the user guessed wrong
+      // Change the text to say the user guessed wrong
       
-    // Clear the clickedChars array
-    clickedChars = [];
+      // Clear the clickedChars array
+      this.setState({clickedChars:[]})
     }
     // If it HAS NOT been clicked before, then...
     else {
       // Add the current char into the "memory" of which chars have or have not been clicked
-      clickedChars.push(this.state.char.id)
+      this.state.clickedChars.push(this.state.char.id)
       // Increase Score by 1
       score++;
     }
