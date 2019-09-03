@@ -7,9 +7,13 @@ import chars from "./chars.json";
 class App extends Component {
   // Setting this.state.chars to the chars json array
   state = {
+    // Create an array storing the ID of all clicked characters
     clickedChars: [],
+    // set the player's Score
     score: 0,
+    // set the player's High Score
     highScore: 0,
+    // Initialize and import the chars array
     chars:chars
   };
   // state = chars[Math.floor(Math.random()*chars.length)];
@@ -30,10 +34,10 @@ class App extends Component {
     // Pseudocode Time!!:
     // When the image is clicked, we need to...
     
-    // Create an array storing the ID of all clicked characters
+
     
     // Check whether or not the character's id is located in the clickedChars array (aka, it has already been clicked)
-    if (this.state.clickedChars.indexOf(chars.id)) {
+    if (this.state.clickedChars.indexOf(chars.id) != -1) {
       // If it HAS been clicked before, then...
     
       // Reset Score back to 0
