@@ -3,7 +3,7 @@ import "./style.css";
 
 function CharCard(props) {
   return (
-    
+
 
 
     <React.Fragment>
