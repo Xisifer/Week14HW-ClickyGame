@@ -33,9 +33,8 @@ class App extends Component {
     // Create an array storing the ID of all clicked characters
     let clickedChars = [];
     // Check whether or not the character's id is located in the clickedChars array (aka, it has already been clicked)
+    if (clickedChars.indexOf(chars.id)) {
     // If it HAS been clicked before, then...
-    if (clickedChars.includes(this.state.char.id)) {
-
     
     // Reset Score back to 0
       score = 0;
