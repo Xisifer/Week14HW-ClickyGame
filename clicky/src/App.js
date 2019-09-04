@@ -18,6 +18,13 @@ class App extends Component {
   };
   
 
+  randomChar = () => {
+    let randomCharNum = Math.floor(Math.random() * chars.length +1)
+    let randomChar = chars[randomCharNum];
+    console.log(randomCharNum);
+    console.log(randomChar)
+  }
+
 
   clickChecker = id => {
     // Pseudocode Time!!:
@@ -26,7 +33,7 @@ class App extends Component {
     // Check whether or not the character's id is located in the clickedChars array (aka, it has already been clicked)
     if (this.state.clickedChars.indexOf(id) !== -1) {
       // If it HAS been clicked before, then...
-
+      console.log("This HAS been clicked before!");
       // Reset Score back to 0
       this.setState({ score: 0 })
       // Shake the screen?
@@ -35,6 +42,9 @@ class App extends Component {
 
       // Clear the clickedChars array
       this.setState({ clickedChars: [] })
+      console.log("The new clickedChars array is now: " + this.state.clickedChars);
+      console.log("The new score is now: " + this.state.score);
+      console.log("The new highScore is now: " + this.state.highScore);
     }
     // If it HAS NOT been clicked before, then...
     else {
@@ -43,6 +53,7 @@ class App extends Component {
 
       // Next, take our new clickedChars that we just defined, and setState it back into the State of the page.
       this.setState({ clickedChars: clickedChars });
+      console.log("this has NOT been clicked before!");
       // Increase Score by 1
       this.setState({ score: this.state.score + 1 });
       console.log("The new clickedChars array is now: " + this.state.clickedChars);
@@ -59,8 +70,9 @@ class App extends Component {
 
     // After checking those, then...
     // Randomize/re-shuffle the position of the character cards
-
+    this.randomChar();
   }
+
 
 
 
@@ -84,7 +96,12 @@ class App extends Component {
             </p>
           </div>
         </div>
-
+        <div id="scoredisplay">
+          {/* <p> */}
+            Score: <div id="score"/> | High Score: <div id="highscore"/>
+          {/* </p> */}
+        </div>
+        
 
         {this.state.chars.map(char => (
           <CharCard
