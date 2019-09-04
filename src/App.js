@@ -14,7 +14,9 @@ class App extends Component {
     // set the player's High Score
     highScore: 0,
     // Initialize and import the chars array
-    chars: chars
+    chars: chars,
+    // Text field showing whether the player guessed correctly or incorrectly
+    result: ""
   };
   
 
@@ -39,13 +41,16 @@ class App extends Component {
       // Shake the screen?
 
       // Change the text to say the user guessed wrong
-
+      this.setState({result:"INCORRECT!"});
       // Clear the clickedChars array
       this.setState({ clickedChars: [] })
+
       console.log("The new clickedChars array is now: " + this.state.clickedChars);
       console.log("The new score is now: " + this.state.score);
       console.log("The new highScore is now: " + this.state.highScore);
     }
+
+
     // If it HAS NOT been clicked before, then...
     else {
       // Add the current char into the "memory" of which chars have or have not been clicked
@@ -53,20 +58,20 @@ class App extends Component {
 
       // Next, take our new clickedChars that we just defined, and setState it back into the State of the page.
       this.setState({ clickedChars: clickedChars });
-      console.log("this has NOT been clicked before!");
+
       // Increase Score by 1
       this.setState({ score: this.state.score + 1 });
+      // Check whether this increase will be greater than the current Top Score
+      if (this.state.score >= this.state.highScore) {
+        // If yes, then increase Top Score to match the score
+        this.setState({ highScore: this.state.highScore + 1 });
+        // If no.....do nothing?
+      }
+      // Change the text to say that the user guessed right
+      this.setState({result:"CORRECT!"});
       console.log("The new clickedChars array is now: " + this.state.clickedChars);
-      console.log("The new score is now: " + this.state.score);
-      console.log("The new highScore is now: " + this.state.highScore);
     }
-    // Check whether this increase will be greater than the current Top Score
-    if (this.state.score > this.state.highScore) {
-      // If yes, then increase Top Score to match the score
-      this.setState({ highScore: this.state.highScore + 1 });
-      // If no.....do nothing?
-    }
-    // Change the text to say that the user guessed right
+
 
     // After checking those, then...
     // Randomize/re-shuffle the position of the character cards
@@ -85,9 +90,12 @@ class App extends Component {
 
       <Wrapper>
 
-        <div id="topbar">
+        <header id="topbar">
           <div>
-            <h1>Character Clicker!</h1>
+            <h1>Character Clicker</h1>
+            <p>
+              Click an image to begin!
+            </p>
             <br></br>
             <p>
                 Click on a character to earn a point!
@@ -95,14 +103,18 @@ class App extends Component {
                 How many can you keep in your head at once? Give it a try and find out!
             </p>
           </div>
+          <div id="scoredisplay">
+          <p>
+            Score: {this.state.score} | High Score: {this.state.highScore}
+          </p>
+          <p>
+            Your Guess: {this.state.result}
+          </p>
         </div>
-        <div id="scoredisplay">
-          {/* <p> */}
-            Score: <div id="score"/> | High Score: <div id="highscore"/>
-          {/* </p> */}
-        </div>
-        
+        </header>
 
+        
+        <div id="cardarea">
         {this.state.chars.map(char => (
           <CharCard
             clickChecker={this.clickChecker}
@@ -114,6 +126,7 @@ class App extends Component {
           // location={char.location}
           />
         ))}
+        </div>
       </Wrapper>
     );
   }
