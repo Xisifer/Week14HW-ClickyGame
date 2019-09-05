@@ -21,10 +21,29 @@ class App extends Component {
   
 
   randomChar = () => {
-    let randomCharNum = Math.floor(Math.random() * chars.length +1)
-    let randomChar = chars[randomCharNum];
-    console.log(randomCharNum);
-    console.log(randomChar)
+
+    // console.log(randomCharNum);
+    // console.log(randomChar);
+    // Create the new array to put the randomized chars into
+    let randomCharArray = [];
+    // As long as the new array is smaller than the original characters....aka as long as we have room in the new array...
+    while (randomCharArray.length < this.state.chars.length) {
+      // Check if the character we're pushing already exists in the random array. 
+
+      const randomCharNum = Math.floor(Math.random() * (this.state.chars.length ))
+      // Now, randomChar is an object containing a complete random character data
+
+      if (randomCharArray.indexOf(this.state.chars[randomCharNum]) === -1) {
+        // If that character does NOT already exist, push it in!
+        randomCharArray.push(this.state.chars[randomCharNum]);
+        console.log(randomCharArray);
+      }
+      
+    }
+    // Now that we've built a new random array, we take it and we store it into State.
+    this.setState({ chars: randomCharArray })
+
+
   }
 
 
